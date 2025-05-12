@@ -54,12 +54,24 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2">
             {/* 小さいロゴ（モバイル用） */}
             <div className="sm:hidden">
-              <Image src="/logo-orca.webp" alt="オルキャリロゴ" width={32} height={32} />
+              <Image
+                src="/logo-orca.webp"
+                alt="オルキャリロゴ"
+                width={100} // モバイルでも見えるように拡大
+                height={0}  // 高さは自動調整
+                priority
+              />
             </div>
 
             {/* フルロゴ（PC用） */}
             <div className="hidden sm:block">
-              <Image src="/logo-orca.webp" alt="オルキャリロゴフル" width={140} height={32} />
+              <Image
+                src="/logo-orca.webp"
+                alt="オルキャリロゴ"
+                width={140} // PCでは大きめに表示
+                height={0}  // 高さは自動で比率保持
+                priority
+              />
             </div>
           </Link>
 
