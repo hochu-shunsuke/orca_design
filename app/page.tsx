@@ -67,7 +67,7 @@ export default function Home() {
   // ヒーロースライダー用の画像配列
   const heroImages = [
     {
-      src: "/image/orcareer.png?height=600&width=1200",
+      src: "/hero-orcareer.png?height=600&width=1200",
       alt: "東海地方の就活生を応援",
       title: "",
       subtitle: "",

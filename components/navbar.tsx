@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, User, Bell, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -51,9 +52,17 @@ export default function Navbar() {
           </Sheet>
 
           <Link href="/" className="flex items-center gap-2">
-            <div className="bg-brand-orange text-white font-bold text-xl p-2 rounded">OL</div>
-            <span className="font-bold text-xl hidden sm:inline-block">オルキャリ</span>
+            {/* 小さいロゴ（モバイル用） */}
+            <div className="sm:hidden">
+              <Image src="/logo-orca.webp" alt="オルキャリロゴ" width={32} height={32} />
+            </div>
+
+            {/* フルロゴ（PC用） */}
+            <div className="hidden sm:block">
+              <Image src="/logo-orca.webp" alt="オルキャリロゴフル" width={140} height={32} />
+            </div>
           </Link>
+
         </div>
 
         <nav className="hidden lg:flex items-center gap-6">
