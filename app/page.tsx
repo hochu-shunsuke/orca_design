@@ -69,8 +69,8 @@ export default function Home() {
     {
       src: "/image/orcareer.png?height=600&width=1200",
       alt: "東海地方の就活生を応援",
-      title: "東海地方の就活生を応援",
-      subtitle: "地元企業との出会いをサポート",
+      title: "",
+      subtitle: "",
       blur: false, // ぼかしなし
     },
     {
