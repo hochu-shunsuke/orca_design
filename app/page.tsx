@@ -1,4 +1,5 @@
 import HeroSlider from "@/components/hero-slider"
+import NotificationBanner from "@/components/notification-banner"
 import SearchSection from "@/components/search-section"
 import JobCardGrid from "@/components/job-card-grid"
 import FeaturedCompanies from "@/components/featured-companies"
@@ -63,30 +64,83 @@ export default function Home() {
     },
   ]
 
+  // ヒーロースライダー用の画像配列
   const heroImages = [
     {
-      src: "/placeholder.svg?height=600&width=1200",
+      src: "/image/orcareer.png?height=600&width=1200",
       alt: "東海地方の就活生を応援",
       title: "東海地方の就活生を応援",
       subtitle: "地元企業との出会いをサポート",
+      blur: false, // ぼかしなし
     },
     {
       src: "/placeholder.svg?height=600&width=1200",
       alt: "あなたの可能性を広げよう",
       title: "あなたの可能性を広げよう",
       subtitle: "東海地方の優良企業があなたを待っています",
+      blur: true, // ぼかしあり
     },
     {
       src: "/placeholder.svg?height=600&width=1200",
       alt: "キャリアの第一歩を踏み出そう",
       title: "キャリアの第一歩を踏み出そう",
       subtitle: "オルキャリがあなたの就活をサポートします",
+      blur: false, // ぼかしなし
+    },
+    {
+      src: "/placeholder.svg?height=600&width=1200",
+      alt: "理想の職場を見つけよう",
+      title: "理想の職場を見つけよう",
+      subtitle: "あなたの希望に合った企業との出会いを",
+      blur: true, // ぼかしあり
+    },
+    {
+      src: "/placeholder.svg?height=600&width=1200",
+      alt: "地域に根差したキャリア",
+      title: "地域に根差したキャリア",
+      subtitle: "東海地方で自分らしく働く未来を描こう",
+      blur: false, // ぼかしなし
     },
   ]
 
+  // お知らせバナー用のデータ配列
+  const notifications = [
+    {
+      type: "info" as const,
+      title: "合同企業説明会開催のお知らせ",
+      message: "5月15日に名古屋国際会議場で合同企業説明会を開催します。ぜひご参加ください。",
+      dismissible: true,
+    },
+    {
+      type: "alert" as const,
+      title: "システムメンテナンスのお知らせ",
+      message: "5月10日 深夜1:00〜3:00はシステムメンテナンスのため一部機能がご利用いただけません。",
+      dismissible: true,
+    },
+    {
+      type: "info" as const,
+      title: "新機能リリースのお知らせ",
+      message: "企業とのマッチング精度が向上する新機能をリリースしました。ぜひご活用ください。",
+      dismissible: false,
+    },
+  ]
+
+  // 現在表示する通知（実際のアプリでは状態管理や条件に基づいて選択）
+  const currentNotification = notifications[0]
+
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <HeroSlider images={heroImages} />
+      {/* お知らせバナー */}
+      <NotificationBanner
+        type={currentNotification.type}
+        title={currentNotification.title}
+        message={currentNotification.message}
+        dismissible={currentNotification.dismissible}
+      />
+
+      {/* ヒーロースライダー - ぼかし効果を有効化 */}
+      <HeroSlider images={heroImages} enableBlur={true} />
+
       <div className="container mx-auto px-4">
         <SearchSection />
 
