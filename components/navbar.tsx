@@ -10,7 +10,6 @@ import { useMobile } from "@/hooks/use-mobile"
 
 export default function Navbar() {
   const isMobile = useMobile()
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -96,25 +95,6 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {isSearchOpen ? (
-            <div className="flex items-center gap-2 bg-background border rounded-md px-2">
-              <Search className="h-4 w-4 text-muted-foreground" />
-              <input
-                className="h-9 w-[180px] sm:w-[200px] bg-transparent border-none focus:outline-none text-sm"
-                placeholder="キーワードで検索"
-                autoFocus
-                onBlur={() => setIsSearchOpen(false)}
-              />
-              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setIsSearchOpen(false)}>
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          ) : (
-            <Button variant="ghost" size="icon" aria-label="検索" onClick={() => setIsSearchOpen(true)}>
-              <Search className="h-5 w-5" />
-            </Button>
-          )}
-
           <Button variant="ghost" size="icon" aria-label="通知">
             <Bell className="h-5 w-5" />
           </Button>
