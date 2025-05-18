@@ -60,9 +60,6 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
                       <Button className="w-full bg-brand-orange hover:bg-brand-orange/90" asChild>
                         <Link href="/auth/login">ログイン</Link>
                       </Button>
-                      <Button className="w-full mt-2" variant="outline" asChild>
-                        <Link href="/auth/login?screen_hint=signup">新規登録</Link>
-                      </Button>
                     </>
                   )}
                 </div>
@@ -139,9 +136,6 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
               <>
                 <Button variant="outline" size="sm" asChild>
                   <Link href="/auth/login">ログイン</Link>
-                </Button>
-                <Button size="sm" className="bg-brand-orange hover:bg-brand-orange/90" asChild>
-                  <Link href="/auth/login?screen_hint=signup">新規登録</Link>
                 </Button>
               </>
             )}
