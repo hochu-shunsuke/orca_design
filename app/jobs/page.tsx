@@ -21,82 +21,10 @@ export const metadata: Metadata = {
   description: "東海地方の新卒向け求人情報を検索",
 }
 
+import { jobs } from "@/mock-data/jobs/data";
+
 export default function JobsPage() {
-  // ダミーデータ（実際の関数は別途定義される）
-  const jobs = [
-    {
-      id: "1",
-      title: "ITエンジニア",
-      company: "テクノ株式会社",
-      location: "名古屋市中区",
-      salary: "月給22万円〜",
-      description:
-        "Webアプリケーション開発を中心に、様々なプロジェクトに携わっていただきます。未経験の方でも研修制度が充実しているので安心してご応募ください。",
-      tags: ["IT", "プログラミング", "名古屋", "未経験歓迎"],
-      logo: "/placeholder.svg?height=80&width=80",
-      publishedAt: "2025/4/15",
-    },
-    {
-      id: "2",
-      title: "営業職",
-      company: "東海商事",
-      location: "静岡市葵区",
-      salary: "月給20万円〜",
-      description:
-        "法人向けの営業職です。既存顧客のフォローと新規開拓を担当していただきます。営業経験は問いませんが、コミュニケーション能力を重視します。",
-      tags: ["営業", "法人営業", "静岡"],
-      logo: "/placeholder.svg?height=80&width=80",
-      publishedAt: "2025/4/14",
-    },
-    {
-      id: "3",
-      title: "総合職",
-      company: "中部産業",
-      location: "岐阜市",
-      salary: "月給21万円〜",
-      description:
-        "製造業の総合職として、営業・企画・管理など様々な部署をローテーションで経験していただきます。将来の幹部候補として育成します。",
-      tags: ["総合職", "岐阜", "製造業"],
-      logo: "/placeholder.svg?height=80&width=80",
-      publishedAt: "2025/4/13",
-    },
-    {
-      id: "4",
-      title: "マーケティング",
-      company: "三河デジタル",
-      location: "豊橋市",
-      salary: "月給20万円〜",
-      description:
-        "デジタルマーケティングの企画・運用を担当していただきます。SNS運用やコンテンツ制作など、幅広い業務に携わることができます。",
-      tags: ["マーケティング", "デジタル", "愛知"],
-      logo: "/placeholder.svg?height=80&width=80",
-      publishedAt: "2025/4/12",
-    },
-    {
-      id: "5",
-      title: "人事",
-      company: "東海人材",
-      location: "名古屋市中村区",
-      salary: "月給19万円〜",
-      description:
-        "採用活動の企画・運営や社内の人事制度の運用を担当していただきます。人事の経験がなくても、人に関わる仕事に興味がある方を歓迎します。",
-      tags: ["人事", "採用", "名古屋"],
-      logo: "/placeholder.svg?height=80&width=80",
-      publishedAt: "2025/4/10",
-    },
-    {
-      id: "6",
-      title: "研究開発",
-      company: "中部研究所",
-      location: "浜松市中区",
-      salary: "月給23万円〜",
-      description:
-        "新素材の研究開発を行います。理系（特に化学・材料工学系）の学生を歓迎します。最先端の設備を使った研究にチャレンジできます。",
-      tags: ["研究", "開発", "静岡", "理系"],
-      logo: "/placeholder.svg?height=80&width=80",
-      publishedAt: "2025/4/8",
-    },
-  ]
+  
 
   return (
     <div className="container mx-auto px-4 py-8">

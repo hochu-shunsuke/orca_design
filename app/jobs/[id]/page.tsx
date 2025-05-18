@@ -12,51 +12,10 @@ export const metadata: Metadata = {
   description: "東海地方の新卒向け求人情報",
 }
 
-export default function JobDetailPage({ params }: { params: { id: string } }) {
-  // ダミーデータ（実際の関数は別途定義される）
-  const job = {
-    id: params.id,
-    title: "ITエンジニア（新卒採用）",
-    company: "テクノ株式会社",
-    location: "名古屋市中区",
-    salary: "月給22万円〜",
-    workHours: "9:00〜18:00（休憩60分）",
-    holidays: "完全週休2日制（土日）、祝日、年末年始、夏季休暇",
-    benefits: "社会保険完備、交通費支給、社員食堂、研修制度",
-    description:
-      "当社は名古屋を拠点とするIT企業です。Webアプリケーション開発を中心に、様々なプロジェクトに携わっていただきます。未経験の方でも研修制度が充実しているので安心してご応募ください。",
-    requirements: "・理系学部卒業見込みの方\n・基本的なPC操作ができる方\n・チームでの作業に意欲的な方",
-    tags: ["IT", "プログラミング", "名古屋", "未経験歓迎", "研修制度あり"],
-    logo: "/placeholder.svg?height=120&width=120",
-    companyImage: "/placeholder.svg?height=300&width=600",
-    applicationDeadline: "2025年6月30日",
-    startDate: "2026年4月1日",
-  }
+import { job, relatedJobs } from "@/mock-data/jobs/data"
 
-  // 関連求人（ダミーデータ）
-  const relatedJobs = [
-    {
-      id: "2",
-      title: "Webデザイナー",
-      company: "名古屋デザイン",
-      location: "名古屋市中区",
-      logo: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: "3",
-      title: "プログラマー",
-      company: "中部システム",
-      location: "名古屋市東区",
-      logo: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: "4",
-      title: "ITコンサルタント",
-      company: "東海コンサルティング",
-      location: "名古屋市西区",
-      logo: "/placeholder.svg?height=60&width=60",
-    },
-  ]
+export default function JobDetailPage({ params }: { params: { id: string } }) {
+
 
   return (
     <div className="container mx-auto px-4 py-8">
