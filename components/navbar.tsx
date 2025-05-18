@@ -7,7 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useMobile } from "@/hooks/use-mobile"
 
-export default function Navbar() {
+// user プロパティの型を定義
+interface NavbarProps {
+  user: {
+    name?: string | null;
+  } | null;
+}
+
+export default function Navbar({ user }: NavbarProps) { // user プロパティを受け取る
   const isMobile = useMobile()
 
   return (
@@ -37,13 +44,27 @@ export default function Navbar() {
                 <Link href="/about" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   オルキャリについて
                 </Link>
+                
                 <div className="mt-4 border-t pt-4">
-                  <Button className="w-full bg-brand-orange hover:bg-brand-orange/90" asChild>
-                    <Link href="/login">ログイン</Link>
-                  </Button>
-                  <Button className="w-full mt-2" variant="outline" asChild>
-                    <Link href="/register">新規登録</Link>
-                  </Button>
+                  {user ? (
+                    <>
+                      <div className="px-4 py-2 text-lg font-medium">
+                        {user.name || 'ユーザー'}様
+                      </div>
+                      <Button className="w-full mt-2" variant="outline" asChild>
+                        <Link href="/auth/logout">ログアウト</Link>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className="w-full bg-brand-orange hover:bg-brand-orange/90" asChild>
+                        <Link href="/auth/login">ログイン</Link>
+                      </Button>
+                      <Button className="w-full mt-2" variant="outline" asChild>
+                        <Link href="/auth/login?screen_hint=signup">新規登録</Link>
+                      </Button>
+                    </>
+                  )}
                 </div>
               </nav>
             </SheetContent>
@@ -98,19 +119,32 @@ export default function Navbar() {
             <Bell className="h-5 w-5" />
           </Button>
 
-          <Button variant="ghost" size="icon" aria-label="アカウント" asChild>
-            <Link href="/mypage">
+          <Link href="/mypage"> {/* Link で Button をラップ */}
+            <Button variant="ghost" size="icon" aria-label="アカウント"> {/* asChild を削除 */}
               <User className="h-5 w-5" />
-            </Link>
-          </Button>
+            </Button>
+          </Link>
 
           <div className="hidden sm:flex gap-2 ml-2">
-            <Button variant="outline" size="sm" asChild>
-              <Link href="/login">ログイン</Link>
-            </Button>
-            <Button size="sm" className="bg-brand-orange hover:bg-brand-orange/90" asChild>
-              <Link href="/register">新規登録</Link>
-            </Button>
+            {user ? (
+              <>
+                <span className="text-sm font-medium self-center">
+                  {user.name || 'ユーザー'}様
+                </span>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/auth/logout">ログアウト</Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/auth/login">ログイン</Link>
+                </Button>
+                <Button size="sm" className="bg-brand-orange hover:bg-brand-orange/90" asChild>
+                  <Link href="/auth/login?screen_hint=signup">新規登録</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
