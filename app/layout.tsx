@@ -6,6 +6,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
+import { UserProvider } from "@/components/providers/user-provider"
 import { auth0 } from "@/lib/auth0"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -28,20 +29,23 @@ export default async function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <div className="flex min-h-screen flex-col">
-            <Navbar user={user} /> {/* Navbarにuser情報を渡す */}
-            
-            {/* ✅ デバッグ用ナビゲーション */}
-            <div className="bg-yellow-100 px-4 py-2 flex gap-4 text-sm text-black font-medium">
-              <p>デバッグ用ナビゲーション</p>
-              <Link href="/ssr" className="underline hover:text-blue-600">SSRページへ</Link>
-              <Link href="/csr" className="underline hover:text-blue-600">CSRページへ</Link>
-              </div>
-            {/* ここまで */}
+          <UserProvider>
+            <div className="flex min-h-screen flex-col">
+              <Navbar user={user} /> {/* Navbarにuser情報を渡す */}
+              
+              {/* ✅ デバッグ用ナビゲーション */}
+              <div className="bg-yellow-100 px-4 py-2 flex gap-4 text-sm text-black font-medium">
+                <p>デバッグ用ナビゲーション</p>
+                <Link href="/ssr" className="underline hover:text-blue-600">SSRページへ</Link>
+                <Link href="/csr" className="underline hover:text-blue-600">CSRページへ</Link>
+                <Link href="/protected" className="underline hover:text-blue-600">保護ページへ</Link>
+                </div>
+              {/* ここまで */}
 
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>
