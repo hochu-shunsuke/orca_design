@@ -52,13 +52,17 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
                         {user.name || 'ユーザー'}様
                       </div>
                       <Button className="w-full mt-2" variant="outline" asChild>
-                        <Link href="/auth/logout">ログアウト</Link>
+                        <Link href="/api/auth/logout" legacyBehavior passHref>
+                          <a>ログアウト</a>
+                        </Link>
                       </Button>
                     </>
                   ) : (
                     <>
                       <Button className="w-full bg-brand-orange hover:bg-brand-orange/90" asChild>
-                        <Link href="/auth/login">ログイン</Link>
+                        <Link href="/api/auth/login" legacyBehavior passHref>
+                          <a>ログイン</a>
+                        </Link>
                       </Button>
                     </>
                   )}
@@ -129,13 +133,17 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
                   {user.name || 'ユーザー'}様
                 </span>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href="/auth/logout">ログアウト</Link>
+                  <Link href="/api/auth/logout" legacyBehavior passHref>
+                    <a>ログアウト</a>
+                  </Link>
                 </Button>
               </>
             ) : (
               <>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href="/auth/login">ログイン</Link>
+                  <Link href="/api/auth/login" legacyBehavior passHref>
+                    <a>ログイン</a>
+                  </Link>
                 </Button>
               </>
             )}
