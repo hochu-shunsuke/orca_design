@@ -6,6 +6,7 @@ import { Menu, User, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useMobile } from "@/hooks/use-mobile"
+import { useUser } from "@/components/providers/user-provider"
 
 // user プロパティの型を定義
 interface NavbarProps {
@@ -14,8 +15,13 @@ interface NavbarProps {
   } | null;
 }
 
-export default function Navbar({ user }: NavbarProps) { // user プロパティを受け取る
+export default function Navbar({ user: serverUser }: NavbarProps) { // user プロパティを受け取る
   const isMobile = useMobile()
+  const { user: clientUser, loading } = useUser()
+  
+  // クライアントサイドとサーバーサイドのユーザー情報を統合
+  // クライアントサイドでローディング中でない場合はクライアントサイドを優先
+  const user = !loading && clientUser ? clientUser : serverUser
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -52,7 +58,7 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
                         {user.name || 'ユーザー'}様
                       </div>
                       <Button className="w-full mt-2" variant="outline" asChild>
-                        <Link href="/api/auth/logout" legacyBehavior passHref>
+                        <Link href="/auth/logout" legacyBehavior passHref>
                           <a>ログアウト</a>
                         </Link>
                       </Button>
@@ -60,7 +66,7 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
                   ) : (
                     <>
                       <Button className="w-full bg-brand-orange hover:bg-brand-orange/90" asChild>
-                        <Link href="/api/auth/login" legacyBehavior passHref>
+                        <Link href="/auth/login" legacyBehavior passHref>
                           <a>ログイン</a>
                         </Link>
                       </Button>
@@ -133,7 +139,7 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
                   {user.name || 'ユーザー'}様
                 </span>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href="/api/auth/logout" legacyBehavior passHref>
+                  <Link href="/auth/logout" legacyBehavior passHref>
                     <a>ログアウト</a>
                   </Link>
                 </Button>
@@ -141,7 +147,7 @@ export default function Navbar({ user }: NavbarProps) { // user プロパティ�
             ) : (
               <>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href="/api/auth/login" legacyBehavior passHref>
+                  <Link href="/auth/login" legacyBehavior passHref>
                     <a>ログイン</a>
                   </Link>
                 </Button>
