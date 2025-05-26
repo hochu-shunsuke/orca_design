@@ -26,7 +26,7 @@ export function withPageAuthRequired<P extends object>(
       if (error || !user) {
         const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
         const redirectPath = returnTo || currentPath;
-        const loginUrl = `/api/auth/login${redirectPath ? `?returnTo=${encodeURIComponent(redirectPath)}` : ''}`;
+        const loginUrl = `/auth/login${redirectPath ? `?returnTo=${encodeURIComponent(redirectPath)}` : ''}`;
         
         // クライアントサイドでのリダイレクト
         if (typeof window !== 'undefined') {

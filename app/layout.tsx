@@ -39,7 +39,8 @@ export default async function RootLayout({
                 <Link href="/ssr" className="underline hover:text-blue-600">SSRページへ</Link>
                 <Link href="/csr" className="underline hover:text-blue-600">CSRページへ</Link>
                 <Link href="/protected" className="underline hover:text-blue-600">保護ページへ</Link>
-                </div>
+                <Link href="/debug/auth-supabase-test" className="underline hover:text-blue-600">Auth0+Supabase連携テスト</Link>
+              </div>
               {/* ここまで */}
 
               <main className="flex-1">{children}</main>

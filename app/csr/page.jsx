@@ -90,7 +90,7 @@ export default function CSRPage() {
                     ログインしていません
                   </p>
                   <a
-                    href="/api/auth/login"
+                    href="auth/login"
                     className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                   >
                     ログイン
@@ -171,7 +171,7 @@ export default function CSRPage() {
               <div className="bg-blue-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-blue-900 mb-2">🔧 開発者向け情報</h4>
                 <ul className="list-disc list-inside space-y-1 text-blue-800 text-sm">
-                  <li>API エンドポイント: <code>/api/auth/me</code></li>
+                  <li>API エンドポイント: <code>/auth/me</code></li>
                   <li>React Context: <code>UserContext</code></li>
                   <li>カスタムHook: <code>useUser()</code></li>
                   <li>プロバイダー: <code>&lt;UserProvider&gt;</code></li>
