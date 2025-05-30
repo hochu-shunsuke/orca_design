@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { withPageAuthRequired } from '@/components/auth/with-page-auth-required';
-import { useUser } from '@/components/providers/user-provider';
+import { useUser } from '@auth0/nextjs-auth0';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Shield, Lock, User, Mail } from 'lucide-react';
 
 function ProtectedPageComponent() {
-  const { user, refreshUser } = useUser();
+  const { user, error, isLoading } = useUser();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -94,11 +94,11 @@ function ProtectedPageComponent() {
                   </div>
 
                   <Button 
-                    onClick={refreshUser} 
+                    onClick={() => window.location.reload()} 
                     variant="outline" 
                     className="w-full mt-4"
                   >
-                    ユーザー情報を更新
+                    ページを更新
                   </Button>
                 </div>
               )}

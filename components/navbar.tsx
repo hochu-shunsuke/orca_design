@@ -6,22 +6,11 @@ import { Menu, User, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useMobile } from "@/hooks/use-mobile"
-import { useUser } from "@/components/providers/user-provider"
+import { useUser } from "@auth0/nextjs-auth0"
 
-// user プロパティの型を定義
-interface NavbarProps {
-  user: {
-    name?: string | null;
-  } | null;
-}
-
-export default function Navbar({ user: serverUser }: NavbarProps) { // user プロパティを受け取る
+export default function Navbar() {
   const isMobile = useMobile()
-  const { user: clientUser, loading } = useUser()
-  
-  // クライアントサイドとサーバーサイドのユーザー情報を統合
-  // クライアントサイドでローディング中でない場合はクライアントサイドを優先
-  const user = !loading && clientUser ? clientUser : serverUser
+  const { user, error, isLoading } = useUser()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
