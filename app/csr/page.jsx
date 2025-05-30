@@ -1,16 +1,16 @@
 'use client';
 
 import React from 'react';
-import { useUser } from '@/components/providers/user-provider';
+import { useUser } from '@auth0/nextjs-auth0';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function CSRPage() {
-  const { user, loading, error, refreshUser } = useUser();
+  const { user, isLoading, error } = useUser();
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-8" data-testid="csr">
         <div className="flex items-center justify-center min-h-[400px]">
@@ -31,8 +31,8 @@ export default function CSRPage() {
             <CardTitle className="text-red-600">エラーが発生しました</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-red-600 mb-4">{error}</p>
-            <Button onClick={refreshUser} variant="outline">
+            <p className="text-red-600 mb-4">{error?.message || error}</p>
+            <Button onClick={() => window.location.reload()} variant="outline">
               再試行
             </Button>
           </CardContent>
@@ -133,12 +133,12 @@ export default function CSRPage() {
               {user && (
                 <div className="mt-6 pt-4 border-t">
                   <Button 
-                    onClick={refreshUser} 
+                    onClick={() => window.location.reload()} 
                     variant="outline" 
                     size="sm"
                     className="w-full"
                   >
-                    ユーザー情報を更新
+                    ページを更新
                   </Button>
                 </div>
               )}

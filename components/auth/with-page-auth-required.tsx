@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@/components/providers/user-provider';
+import { useUser } from '@auth0/nextjs-auth0';
 
 interface WithPageAuthRequiredOptions {
   returnTo?: string;
@@ -14,13 +14,13 @@ export function withPageAuthRequired<P extends object>(
   options: WithPageAuthRequiredOptions = {}
 ) {
   const WrappedComponent = (props: P) => {
-    const { user, loading, error } = useUser();
+    const { user, isLoading, error } = useUser();
     const router = useRouter();
     const { returnTo, loadingComponent: LoadingComponent } = options;
 
     useEffect(() => {
       // ローディング中は何もしない
-      if (loading) return;
+      if (isLoading) return;
 
       // エラーがある場合またはユーザーが存在しない場合はログインページにリダイレクト
       if (error || !user) {
@@ -30,14 +30,13 @@ export function withPageAuthRequired<P extends object>(
         
         // クライアントサイドでのリダイレクト
         if (typeof window !== 'undefined') {
-          window.location.href = loginUrl;
+          router.push(loginUrl);
         }
-        return;
       }
-    }, [user, loading, error, router, returnTo]);
+    }, [user, isLoading, error, router, returnTo]);
 
     // ローディング中の表示
-    if (loading) {
+    if (isLoading) {
       if (LoadingComponent) {
         return <LoadingComponent />;
       }
