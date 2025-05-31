@@ -1,4 +1,5 @@
-import type { Metadata } from "next"
+'use client';
+
 import Link from "next/link"
 import Image from "next/image"
 import {
@@ -20,15 +21,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
+import { withPageAuthRequired } from '@/components/auth/with-page-auth-required';
 
-export const metadata: Metadata = {
-  title: "マイページ | オルキャリ",
-  description: "オルキャリのマイページ",
-}
 
 import { user, appliedJobs, favoriteJobs, upcomingEvents, recentMessages } from "@/mock-data/mypage/data"
 
-export default function MyPage() {
+function MyPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">マイページ</h1>
@@ -367,3 +365,5 @@ export default function MyPage() {
     </div>
   )
 }
+
+export default withPageAuthRequired(MyPage);

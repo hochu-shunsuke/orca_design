@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { withPageAuthRequired } from '@/components/auth/with-page-auth-required';
 import { useUser } from '@auth0/nextjs-auth0';
 
