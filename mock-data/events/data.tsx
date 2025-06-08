@@ -1,5 +1,44 @@
+// 型定義
+interface Event {
+  id: string
+  title: string
+  date: string
+  time: string
+  location: string
+  address: string
+  description: string
+  image: string
+  category: string
+  capacity: string
+  fee: string
+  organizer: string
+  status: string
+  featured: boolean
+  participatingCompanies: string[]
+}
+
+interface EventDetail extends Omit<Event, 'participatingCompanies'> {
+  detailedDescription: string
+  participatingCompanies: Company[]
+}
+
+interface Company {
+  id: string
+  name: string
+  industry: string
+  logo: string
+}
+
+interface RelatedEvent {
+  id: string
+  title: string
+  date: string
+  location: string
+  image: string
+}
+
 // 一覧表示用のイベント
-export const events = [
+export const events: Event[] = [
     {
     id: "1",
     title: "合同企業説明会 in 名古屋",
@@ -105,7 +144,7 @@ export const events = [
 ]
 
 // 1件のイベント(詳細ページ用)
-export const event = {
+export const event: EventDetail = {
     id: "1",
     title: "合同企業説明会 in 名古屋",
     date: "2025年5月15日",
@@ -169,7 +208,7 @@ export const event = {
 }
 
 // 関連イベント（ダミーデータ）
-export const relatedEvents = [
+export const relatedEvents: RelatedEvent[] = [
     {
       id: "2",
       title: "IT業界研究セミナー",

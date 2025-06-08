@@ -27,14 +27,14 @@ export default function Navbar() {
                 <Link href="/" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   ホーム
                 </Link>
+                <Link href="/events" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
+                  イベント
+                </Link>
                 <Link href="/jobs" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   求人検索
                 </Link>
                 <Link href="/companies" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   企業一覧
-                </Link>
-                <Link href="/events" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
-                  イベント
                 </Link>
                 <Link href="/about" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   オルキャリについて
@@ -96,14 +96,14 @@ export default function Navbar() {
           <Link href="/" className="text-sm font-medium hover:text-brand-orange">
             ホーム
           </Link>
+          <Link href="/events" className="text-sm font-medium hover:text-brand-orange">
+            イベント
+          </Link>
           <Link href="/jobs" className="text-sm font-medium hover:text-brand-orange">
             求人検索
           </Link>
           <Link href="/companies" className="text-sm font-medium hover:text-brand-orange">
             企業一覧
-          </Link>
-          <Link href="/events" className="text-sm font-medium hover:text-brand-orange">
-            イベント
           </Link>
           <Link href="/about" className="text-sm font-medium hover:text-brand-orange">
             オルキャリについて
