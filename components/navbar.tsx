@@ -30,6 +30,9 @@ export default function Navbar() {
                 <Link href="/events" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   イベント
                 </Link>
+                <Link href="/internships" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
+                  インターンシップ
+                </Link>
                 <Link href="/jobs" className="text-lg font-medium px-4 py-2 rounded-md hover:bg-accent">
                   求人検索
                 </Link>
@@ -98,6 +101,9 @@ export default function Navbar() {
           </Link>
           <Link href="/events" className="text-sm font-medium hover:text-brand-orange">
             イベント
+          </Link>
+          <Link href="/internships" className="text-sm font-medium hover:text-brand-orange">
+            インターンシップ
           </Link>
           <Link href="/jobs" className="text-sm font-medium hover:text-brand-orange">
             求人検索

@@ -15,82 +15,14 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
+import { companies } from "@/mock-data/companies/data"
+
 export const metadata: Metadata = {
   title: "企業一覧 | オルキャリ",
   description: "東海地方の企業情報を検索",
 }
 
 export default function CompaniesPage() {
-  // ダミーデータ（実際の関数は別途定義される）
-  const companies = [
-    {
-      id: "1",
-      name: "テクノ株式会社",
-      industry: "IT・通信",
-      location: "名古屋市中区",
-      description: "Webアプリケーション開発、システム開発、ITコンサルティング",
-      employeeCount: "120名",
-      logo: "/placeholder.svg?height=120&width=120",
-      coverImage: "/placeholder.svg?height=200&width=400",
-      jobCount: 3,
-    },
-    {
-      id: "2",
-      name: "東海商事",
-      industry: "商社",
-      location: "静岡市葵区",
-      description: "自動車部品、電子部品の輸出入および販売",
-      employeeCount: "250名",
-      logo: "/placeholder.svg?height=120&width=120",
-      coverImage: "/placeholder.svg?height=200&width=400",
-      jobCount: 2,
-    },
-    {
-      id: "3",
-      name: "中部産業",
-      industry: "製造業",
-      location: "岐阜市",
-      description: "自動車部品、精密機械部品の製造",
-      employeeCount: "450名",
-      logo: "/placeholder.svg?height=120&width=120",
-      coverImage: "/placeholder.svg?height=200&width=400",
-      jobCount: 4,
-    },
-    {
-      id: "4",
-      name: "三河デジタル",
-      industry: "IT・通信",
-      location: "豊橋市",
-      description: "デジタルマーケティング、Webサイト制作",
-      employeeCount: "80名",
-      logo: "/placeholder.svg?height=120&width=120",
-      coverImage: "/placeholder.svg?height=200&width=400",
-      jobCount: 2,
-    },
-    {
-      id: "5",
-      name: "東海人材",
-      industry: "人材サービス",
-      location: "名古屋市中村区",
-      description: "人材紹介、人材派遣、採用コンサルティング",
-      employeeCount: "150名",
-      logo: "/placeholder.svg?height=120&width=120",
-      coverImage: "/placeholder.svg?height=200&width=400",
-      jobCount: 1,
-    },
-    {
-      id: "6",
-      name: "中部研究所",
-      industry: "研究・開発",
-      location: "浜松市中区",
-      description: "材料研究、製品開発、技術コンサルティング",
-      employeeCount: "90名",
-      logo: "/placeholder.svg?height=120&width=120",
-      coverImage: "/placeholder.svg?height=200&width=400",
-      jobCount: 2,
-    },
-  ]
-
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">企業一覧</h1>
