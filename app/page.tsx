@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import HeroSlider from "@/components/hero-slider"
 import NotificationBanner from "@/components/notification-banner"
 import SearchSection from "@/components/search-section"
@@ -6,6 +9,7 @@ import FeaturedCompanies from "@/components/featured-companies"
 import ServiceFeatures from "@/components/service-features"
 import EventCardFeatured from "@/components/events/event-card-featured"
 import EventCardNormal from "@/components/events/event-card-normal"
+import { Button } from "@/components/ui/button"
 
 // コンテンツデータ
 import { featuredJobs, heroImages, notifications } from "@/mock-data/app/data"
@@ -17,6 +21,9 @@ export default function Home() {
 
   // 注目のイベントのモックデータをフィルタして（featured = true）取得
   const featuredEvents = events.filter(event => event.featured)
+
+  // イベントカードの表示モードを管理
+  const [showFeaturedCards, setShowFeaturedCards] = useState(true)
 
   return (
     <div className="flex flex-col gap-16 pb-16">
@@ -34,20 +41,29 @@ export default function Home() {
       <div className="container mx-auto px-4">
         {/* 近日開催のイベント */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center">近日開催のイベント(横長ver)</h2>
-          <div className="space-y-6">
-            {featuredEvents.map((event) => (
-              <EventCardFeatured key={event.id} event={event} />
-            ))}
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold ">近日開催のイベント</h2>
+            <Button 
+              onClick={() => setShowFeaturedCards(!showFeaturedCards)}
+              variant="outline"
+            >
+              {showFeaturedCards ? "縦長カード表示" : "横長カード表示"}
+            </Button>
           </div>
           
-          {/* 通常のイベントカード */}
-          <h2 className="text-3xl font-bold mb-8 text-center">近日開催のイベント(縦長ver)</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {featuredEvents.map((event) => (
-              <EventCardNormal key={`normal-${event.id}`} event={event} />
-            ))}
-          </div>
+          {showFeaturedCards ? (
+            <div className="space-y-6">
+              {featuredEvents.map((event) => (
+                <EventCardFeatured key={event.id} event={event} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredEvents.map((event) => (
+                <EventCardNormal key={`normal-${event.id}`} event={event} />
+              ))}
+            </div>
+          )}
         </section>
 
         <SearchSection />
